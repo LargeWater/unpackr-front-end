@@ -65,10 +65,10 @@ const App = () => {
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
-        {/* <Route
+        <Route
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
-        /> */}
+        />
         <Route
           path='/add-lecture'
           element={user ? 
