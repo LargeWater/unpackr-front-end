@@ -8,13 +8,21 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as lectureService from './services/lectureService'
 import AddLecture from './pages/AddLecture/AddLecture'
 import BottomNav from './components/BottomNav/BottomNav'
 
 const App = () => {
+  const [lectures, setLectures] = useState([])
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
   const [profiles, setProfiles] = useState([])
+
+  const handleAddLecture = async (newLectureData) => {
+    const newLecture = await lectureService.create(newLectureData)
+    setLectures([...lectures, newLecture])
+    navigate('/')
+  }
 
   useEffect(() => {
     const fetchProfiles = async () => {
@@ -53,7 +61,10 @@ const App = () => {
         /> */}
         <Route
           path='/add-lecture'
-          element={user ? <AddLecture /> : <Navigate to="/login" />}
+          element={user ? 
+            <AddLecture handleAddLecture={handleAddLecture}/> 
+            : <Navigate to="/" />
+          }
           />
         <Route
           path="/changePassword"
