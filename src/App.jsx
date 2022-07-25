@@ -11,6 +11,8 @@ import * as profileService from './services/profileService'
 import * as lectureService from './services/lectureService'
 import AddLecture from './pages/AddLecture/AddLecture'
 import BottomNav from './components/BottomNav/BottomNav'
+import Index from './pages/LectureIndex/LectureIndex'
+import LectureDetails from './pages/LectureDetails/LectureDetails'
 
 const App = () => {
   const [lectures, setLectures] = useState([])
@@ -21,7 +23,7 @@ const App = () => {
   const handleAddLecture = async (newLectureData) => {
     const newLecture = await lectureService.create(newLectureData)
     setLectures([...lectures, newLecture])
-    navigate('/')
+    navigate('/lectures')
   }
 
   useEffect(() => {
@@ -30,6 +32,14 @@ const App = () => {
       setProfiles(profileData)
     }
     fetchProfiles()
+  }, [])
+
+  useEffect(() => {
+    const fetchLectures = async () => {
+      const lectureData = await lectureService.getAll()
+      setLectures(lectureData)
+    }
+    fetchLectures()
   }, [])
 
   const handleLogout = () => {
@@ -63,8 +73,12 @@ const App = () => {
           path='/add-lecture'
           element={user ? 
             <AddLecture handleAddLecture={handleAddLecture}/> 
-            : <Navigate to="/" />
+            : <Navigate to="/login" />
           }
+          />
+        <Route
+          path='/lectures'
+          element={<Index lectures={lectures} /> }
           />
         <Route
           path="/changePassword"
@@ -75,6 +89,10 @@ const App = () => {
               <Navigate to="/login" />
             )
           }
+        />
+        <Route
+          path="/lectures/:id"
+          element={<LectureDetails />}
         />
       </Routes>
       {/* <BottomNav /> */}
