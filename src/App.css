@@ -9,3 +9,10 @@ html{
 a:visited{
   color: black;
 } */
+
+.header-logo{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 5vmin;
+}

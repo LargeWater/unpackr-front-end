@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './ChangePasswordForm.module.css'
 import * as authService from '../../services/authService'
 import { TextField } from '@mui/material'
+import { Button } from '@mui/material'
 
 const ChangePasswordForm = props => {
   const navigate = useNavigate()
@@ -80,11 +81,11 @@ const ChangePasswordForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+        <Button variant="contained" disabled={isFormInvalid()} className={styles.button}>
           Change Password
-        </button>
+        </Button>
         <Link to="/">
-          <button>Cancel</button>
+          <Button variant='outlined'>Cancel</Button>
         </Link>
       </div>
     </form>

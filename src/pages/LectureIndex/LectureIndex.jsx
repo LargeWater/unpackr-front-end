@@ -6,18 +6,23 @@ import { CardContent } from "@mui/material";
 import { Typography } from "@mui/material"
 import { Button } from "@mui/material";
 import styles from "./LectureIndex.module.css";
+import { useState, useEffect } from "react";
 
 
 const Index = (props, user) => {
-  console.log("PROPS: ", props)
+  console.log("index props", props)
+  const[lectures, setLectures] = useState([]);
   
   const posts = props.lectures.filter((lecture) =>
     lecture.author._id === props.user.profile
   )
+  useEffect(() => {
+    setLectures(posts);
+  }, [])
 
   return (
     <div className={styles.cardContainer}>
-    {props.lectures.map(lecture => (
+    {posts.map(lecture => (
       <div key={lecture._id}>
         <Box sx={{ width: 275 }} className={styles.box}>
           <Card variant="outlined" className={styles.cardDiv}>

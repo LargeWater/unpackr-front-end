@@ -14,6 +14,8 @@ import AddLecture from './pages/AddLecture/AddLecture'
 import BottomNav from './components/BottomNav/BottomNav'
 import Index from './pages/LectureIndex/LectureIndex'
 import LectureDetails from './pages/LectureDetails/LectureDetails'
+import Account from './pages/Account/Account'
+import logo from './unpackr.png'
 
 const App = () => {
   const [lectures, setLectures] = useState([])
@@ -56,7 +58,12 @@ const App = () => {
   return (
     <>
       <div className='App'>
-      <NavBar user={user} handleLogout={handleLogout} />
+      {/* <NavBar user={user} handleLogout={handleLogout} /> */}
+      <div className='header'>
+        <div className='header-logo'>
+          <img src={logo} alt='logo' />
+        </div>
+      </div>
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -87,6 +94,10 @@ const App = () => {
               <Navigate to="/login" />
             )
           }
+        />
+        <Route 
+          path="/account"
+          element={<Account handleSignupOrLogin={handleSignupOrLogin} handleLogout={handleLogout}/>}
         />
         <Route
           path="/lectures/:id"
