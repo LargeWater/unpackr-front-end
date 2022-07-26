@@ -1,8 +1,12 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import styles from './LectureDetails.module.css'
+import { Button, Divider } from "@mui/material";
 
 
-function LectureDetails ({lecture}) {
+function LectureDetails (props) {
+  console.log('intial props', props)
   const location = useLocation()
 
   const[lectureData, setLectureData] = useState(location.state.lecture)
@@ -14,11 +18,27 @@ function LectureDetails ({lecture}) {
   }, [location])
 
   return (
-    <>
+    <div className={styles.lecture}>
       <h1>{lectureData.subject}</h1>
-      <p>{lectureData.takeaway}</p> 
-      <p>{lectureData.painpoint}</p>
-    </>
+      <h3>Takeaway: {lectureData.takeaway}</h3> 
+      <h3>Struggled with: {lectureData.painpoint}</h3>
+      <div>
+        <Link
+          state={location}
+          to="/edit"
+        >
+          <Button variant="contained" className={styles.editBtn}>
+            Edit
+          </Button>
+        </Link>
+        <Divider />
+        <Link to="/lectures">
+          <Button variant="contained" className={styles.deleteBtn} onClick={() => props.lecture.handleDeleteLecture(props.lecture._id)}>
+            Delete
+          </Button>
+        </Link>
+      </div>
+    </div>
   )
 }
 

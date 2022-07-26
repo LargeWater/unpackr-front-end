@@ -1,7 +1,8 @@
-.lecture{
+.form{
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  gap: 15px;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

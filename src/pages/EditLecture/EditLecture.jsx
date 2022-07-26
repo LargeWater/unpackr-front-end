@@ -1,16 +1,18 @@
-import styles from './AddLecture.module.css';
+import styles from './EditLecture.module.css';
 import { useState, useRef, useEffect } from "react"
 import { TextField } from '@mui/material';
 import { Button } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
 
-function AddLecture(props) {
+function EditLecture(props) {
   console.log(props)
-  const [formData, setFormData] = useState({
-    subject: "",
-    takeaway: "",
-    painpoint: "",
-  })
+  const location = useLocation()
+  console.log("EDIT LOCATION: ", location)
+  const initialFormData = {
+    ...location.state
+  }
+  const [formData, setFormData] = useState(initialFormData)
 
   const [validForm, setValidForm] = useState(false)
 
@@ -26,19 +28,21 @@ function AddLecture(props) {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleAddLecture(formData)
+    props.handleUpdateLecture(formData)
   }
+  console.log("intialFormData: ", initialFormData)
+  console.log("formData: ", formData)
 
   return (
     <>
-      <h1>Add a Lecture</h1>
+      <h1>Edit Lecture</h1>
       <form ref={formElement} onSubmit={handleSubmit} autoComplete='off' className={styles.form}>
         <TextField 
           type="text" 
           name="subject" 
-          sx={{ width: "30ch", backgroundColor: "white"}}
+          sx={{ width: "30ch"}}
           label="Subject"
-          variant='filled'
+          variant='outlined'
           value={formData.subject} 
           onChange={handleChange} 
         />
@@ -47,9 +51,9 @@ function AddLecture(props) {
           maxRows={4}
           type="text" 
           name="takeaway" 
-          sx={{ width: "30ch", backgroundColor: "white"}}
+          sx={{ width: "30ch"}}
           label="Takeaway"
-          variant='filled'
+          variant='outlined'
           value={formData.takeaway}
           onChange={handleChange} 
         />
@@ -58,9 +62,9 @@ function AddLecture(props) {
           maxRows={4}
           type="text" 
           name="painpoint"
-          sx={{ width: "30ch", backgroundColor: "white"}}
+          sx={{ width: "30ch"}}
           label="What did you struggle with?"
-          variant='filled'
+          variant='outlined'
           value={formData.painpoint}
           onChange={handleChange} 
         />
@@ -76,4 +80,4 @@ function AddLecture(props) {
   )
 }
 
-export default AddLecture
+export default EditLecture

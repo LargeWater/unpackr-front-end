@@ -21,7 +21,7 @@ export default function BottomNav() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction component={Link} to="/lectures" label="Home" icon={<Home />} />
+        <BottomNavigationAction component={Link} to="/" label="Home" icon={<Home />} />
         <Divider orientation="vertical" flexItem />
         <BottomNavigationAction component={Link} to="/add-lecture"label="Add Lecture" icon={<AddCircle />} />
         <Divider orientation="vertical" flexItem />

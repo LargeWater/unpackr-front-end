@@ -18,9 +18,33 @@ async function getAll() {
   const res = await fetch(BASE_URL)
   return res.json()
 }
+async function deleteOne(id) {
+  console.log("ID", {id})
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }
+  });
+  return res.json();
+}
 
+async function update(lecture) {
+  const res = await fetch(`${BASE_URL}/${lecture.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(lecture)
+  });
+  return res.json();
+}
 
 export {
   create,
-  getAll
+  getAll,
+  deleteOne,
+  update
 }

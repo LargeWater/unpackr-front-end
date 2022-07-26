@@ -1,5 +1,6 @@
 html{
-  background-color: #69c8f0;
+  background: rgb(80,130,255);
+  background: linear-gradient(270deg, rgba(80,130,255,1) 0%, rgba(69,179,225,1) 68%);
   font-family: 'Roboto', sans-serif;
 }
 

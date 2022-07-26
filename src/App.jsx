@@ -1,11 +1,11 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import NavBar from './components/NavBar/NavBar'
+// import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+// import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
@@ -15,7 +15,8 @@ import BottomNav from './components/BottomNav/BottomNav'
 import Index from './pages/LectureIndex/LectureIndex'
 import LectureDetails from './pages/LectureDetails/LectureDetails'
 import Account from './pages/Account/Account'
-import logo from './unpackr.png'
+import logo from './logo.png'
+import EditLecture from './pages/EditLecture/EditLecture'
 
 const App = () => {
   const [lectures, setLectures] = useState([])
@@ -54,7 +55,17 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+  const handleDeleteLecture = async (id) => {
+    console.log("ID", {id})
+    const deletedLecture = await lectureService.deleteOne(id)
+    setLectures(lectures.filter(lecture => lecture._id !== deletedLecture._id))
+  }
 
+  const handleUpdateLecture = async (updatedLectureData) => {
+    const updatedLecture = await lectureService.update(updatedLectureData)
+    setLectures(lectures.map(lecture => lecture._id === updatedLecture._id ? updatedLecture : lecture))
+    navigate('/lectures')
+  }
   return (
     <>
       <div className='App'>
@@ -83,7 +94,7 @@ const App = () => {
           />
         <Route
           path='/lectures'
-          element={<Index lectures={lectures} user={user}/> }
+          element={<Index lectures={lectures} user={user} handleDeleteLecture={handleDeleteLecture}/> }
           />
         <Route
           path="/changePassword"
@@ -101,11 +112,14 @@ const App = () => {
         />
         <Route
           path="/lectures/:id"
-          element={<LectureDetails />}
+          element={<LectureDetails handleDeleteLecture={handleDeleteLecture}/>}
         />
+        <Route 
+            path='/edit' 
+            element={<EditLecture handleUpdateLecture={handleUpdateLecture}/>}/>
       </Routes>
-      </div>
       <BottomNav sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={3}/>
+      </div>
     </>
   )
 }
