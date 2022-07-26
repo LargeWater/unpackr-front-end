@@ -8,15 +8,20 @@ import { Button } from "@mui/material";
 import styles from "./LectureIndex.module.css";
 
 
-const Index = (props) => {
+const Index = (props, user) => {
   console.log("PROPS: ", props)
+  
+  const posts = props.lectures.filter((lecture) =>
+    lecture.author._id === props.user.profile
+  )
+
   return (
     <div className={styles.cardContainer}>
     {props.lectures.map(lecture => (
-      <div key={lecture._id} className={styles.cardDiv}>
-        <Box sx={{ width: 275 }}>
-          <Card variant="outlined">
-            <CardContent>
+      <div key={lecture._id}>
+        <Box sx={{ width: 275 }} className={styles.box}>
+          <Card variant="outlined" className={styles.cardDiv}>
+            <CardContent className={styles.cardContent}>
               <Typography variant="h4" component="div">
                 {lecture.subject}
               </Typography>

@@ -1,3 +1,4 @@
+import './App.css'
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
@@ -54,6 +55,7 @@ const App = () => {
 
   return (
     <>
+      <div className='App'>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
@@ -74,7 +76,7 @@ const App = () => {
           />
         <Route
           path='/lectures'
-          element={<Index lectures={lectures} /> }
+          element={<Index lectures={lectures} user={user}/> }
           />
         <Route
           path="/changePassword"
@@ -91,7 +93,8 @@ const App = () => {
           element={<LectureDetails />}
         />
       </Routes>
-      {/* <BottomNav /> */}
+      </div>
+      <BottomNav sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={3}/>
     </>
   )
 }
