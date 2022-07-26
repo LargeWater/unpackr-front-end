@@ -37,9 +37,10 @@ const LoginForm = props => {
         <TextField
           type="text"
           autoComplete="off"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           id="email"
           label="Email"
-          variant='outlined'
+          variant='filled'
           value={formData.email}
           name="email"
           onChange={handleChange}
@@ -49,9 +50,10 @@ const LoginForm = props => {
         <TextField
           type="password"
           autoComplete="off"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           id="password"
           label="Password"
-          variant='outlined'
+          variant='filled'
           value={formData.pw}
           name="pw"
           onChange={handleChange}

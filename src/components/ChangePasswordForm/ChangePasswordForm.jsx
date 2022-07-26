@@ -48,9 +48,10 @@ const ChangePasswordForm = props => {
         <TextField
           type="password"
           autoComplete="off"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           id="password"
           label="Current Password"
-          variant='outlined'
+          variant='filled'
           value={pw}
           name="pw"
           onChange={handleChange}
@@ -60,9 +61,10 @@ const ChangePasswordForm = props => {
         <TextField
           type="password"
           autoComplete="off"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           id="newPassword"
           label="New Password"
-          variant='outlined'
+          variant='filled'
           value={newPw}
           name="newPw"
           onChange={handleChange}
@@ -72,9 +74,10 @@ const ChangePasswordForm = props => {
         <TextField
           type="password"
           autoComplete="off"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           id="newPasswordConf"
           label="Confirm New Password"
-          variant='outlined'
+          variant='filled'
           value={newPwConf}
           name="newPwConf"
           onChange={handleChange}
