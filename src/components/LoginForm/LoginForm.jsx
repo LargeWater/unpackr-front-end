@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
 import * as authService from '../../services/authService'
+import { TextField } from '@mui/material'
 
 const LoginForm = props => {
   const [formData, setFormData] = useState({
@@ -33,22 +34,24 @@ const LoginForm = props => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
-        <input
+        <TextField
           type="text"
           autoComplete="off"
           id="email"
+          label="Email"
+          variant='outlined'
           value={formData.email}
           name="email"
           onChange={handleChange}
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
-        <input
+        <TextField
           type="password"
           autoComplete="off"
           id="password"
+          label="Password"
+          variant='outlined'
           value={formData.pw}
           name="pw"
           onChange={handleChange}

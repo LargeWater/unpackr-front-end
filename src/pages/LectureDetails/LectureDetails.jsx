@@ -2,24 +2,22 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 
-function LectureDetails (props) {
-  console.log('Lecture PROPS: ', props)
+function LectureDetails ({lecture}) {
   const location = useLocation()
-  const[lecture, setLecture] = useState(location.state.lecture)
+
+  const[lectureData, setLectureData] = useState(location.state.lecture)
 
   console.log("LOCATION: ", location.state.lecture)
 
   useEffect(() => {
-    setLecture(location.state.lecture)
-
+    setLectureData(location.state.lecture)
   }, [location])
 
   return (
     <>
-      <h1>{lecture.subject}</h1>
-      <p>{lecture.takeaway}</p> 
-      <p>{lecture.painpoint}</p>
-
+      <h1>{lectureData.subject}</h1>
+      <p>{lectureData.takeaway}</p> 
+      <p>{lectureData.painpoint}</p>
     </>
   )
 }

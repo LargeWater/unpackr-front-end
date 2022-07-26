@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './ChangePasswordForm.module.css'
 import * as authService from '../../services/authService'
+import { TextField } from '@mui/material'
 
 const ChangePasswordForm = props => {
   const navigate = useNavigate()
@@ -43,39 +44,36 @@ const ChangePasswordForm = props => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>
-          Current Password
-        </label>
-        <input
+        <TextField
           type="password"
           autoComplete="off"
           id="password"
+          label="Current Password"
+          variant='outlined'
           value={pw}
           name="pw"
           onChange={handleChange}
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="newPassword" className={styles.label}>
-          New Password
-        </label>
-        <input
+        <TextField
           type="password"
           autoComplete="off"
           id="newPassword"
+          label="New Password"
+          variant='outlined'
           value={newPw}
           name="newPw"
           onChange={handleChange}
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="newPasswordConf" className={styles.label}>
-          Confirm New Password
-        </label>
-        <input
+        <TextField
           type="password"
           autoComplete="off"
           id="newPasswordConf"
+          label="Confirm New Password"
+          variant='outlined'
           value={newPwConf}
           name="newPwConf"
           onChange={handleChange}
