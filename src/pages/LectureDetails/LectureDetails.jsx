@@ -32,7 +32,7 @@ function LectureDetails (props) {
           </Button>
         </Link>
         <Divider />
-        <Link to="/lectures">
+        <Link to="/lectures" props={props}>
           <Button variant="contained" className={styles.deleteBtn} onClick={() => props.handleDeleteLecture(location.state.lecture._id)}>
             Delete
           </Button>

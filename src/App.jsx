@@ -91,7 +91,6 @@ const App = () => {
         />
         <Route
           path='/add-lecture'
-          component={App}
           element={user ? 
             <AddLecture handleAddLecture={handleAddLecture}/> 
             : <Navigate to="/login" />

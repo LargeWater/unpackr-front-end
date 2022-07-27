@@ -16,14 +16,15 @@ const Index = (props) => {
   const posts = props.lectures.filter((lecture) =>
     lecture.author._id === props.user.profile
   )
-  useEffect(() => {
-    setLectures(posts);
+    useEffect(() => {
+      setLectures(posts);
+      console.log("POOOOSTS: ", posts)
   },[])
 
   return (
     <div className={styles.cardContainer}>
     {posts.map(lecture => (
-      <div key={lecture._id}>
+      <div key={lecture._id} state={{posts}}>
         <Box sx={{ width: 275 }} className={styles.box}>
           <Card variant="outlined" className={styles.cardDiv}>
             <CardContent className={styles.cardContent}>
