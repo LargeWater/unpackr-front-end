@@ -3,18 +3,17 @@ import { useState, useRef, useEffect } from "react"
 import { TextField } from '@mui/material';
 import { Button } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function EditLecture(props) {
   console.log(props)
   const location = useLocation()
   console.log("EDIT LOCATION: ", location)
-  const initialFormData = {
-    ...location.state
-  }
-  const [formData, setFormData] = useState(initialFormData)
+  
+  const [formData, setFormData] = useState(location.state.lecture)
 
-  const [validForm, setValidForm] = useState(false)
+  const [validForm, setValidForm] = useState(true)
 
   const handleChange = evt => {
 		setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -30,7 +29,7 @@ function EditLecture(props) {
     evt.preventDefault()
     props.handleUpdateLecture(formData)
   }
-  console.log("intialFormData: ", initialFormData)
+  // console.log("intialFormData: ", initialFormData)
   console.log("formData: ", formData)
 
   return (
@@ -73,8 +72,13 @@ function EditLecture(props) {
           variant='contained'
           disabled={!validForm}
         >
-          Add Lecture
+          Save Lecture
         </Button>
+        <Link to="/">
+          <Button variant='contained'>
+            Cancel
+          </Button>
+        </Link>
       </form>
     </>
   )

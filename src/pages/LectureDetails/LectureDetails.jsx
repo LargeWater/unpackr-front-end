@@ -24,7 +24,7 @@ function LectureDetails (props) {
       <h3>Struggled with: {lectureData.painpoint}</h3>
       <div>
         <Link
-          state={location}
+          state={location.state}
           to="/edit"
         >
           <Button variant="contained" className={styles.editBtn}>
@@ -33,7 +33,7 @@ function LectureDetails (props) {
         </Link>
         <Divider />
         <Link to="/lectures">
-          <Button variant="contained" className={styles.deleteBtn} onClick={() => props.lecture.handleDeleteLecture(props.lecture._id)}>
+          <Button variant="contained" className={styles.deleteBtn} onClick={() => props.handleDeleteLecture(location.state.lecture._id)}>
             Delete
           </Button>
         </Link>

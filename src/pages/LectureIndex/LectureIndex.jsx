@@ -18,7 +18,7 @@ const Index = (props, user) => {
   )
   useEffect(() => {
     setLectures(posts);
-  }, [])
+  },[])
 
   return (
     <div className={styles.cardContainer}>
@@ -38,7 +38,7 @@ const Index = (props, user) => {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <Link to={`/lectures/${lecture._id}`} key={lecture._id} state={{lecture}} >
+                <Link to={`/lectures/${lecture._id}`} key={lecture._id} state={{lecture}} handleDeleteLecture={lecture.handleDeleteLecture}>
                   Details
                   </Link>
                 </Button>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './ChangePasswordForm.module.css'
 import * as authService from '../../services/authService'
-import { Divider, TextField } from '@mui/material'
+import { TextField } from '@mui/material'
 import { Button } from '@mui/material'
 
 const ChangePasswordForm = props => {

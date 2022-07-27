@@ -17,32 +17,6 @@
   /* box-shadow: 2px 2px 30px #dd6531; */
 }
 
-.cardDiv:hover{
-  color: rgb(255, 255, 255);
-}
-
-.cardDiv::before {  
-  transform: scaleX(0);
-  transform-origin: bottom right;
-}
-
-.cardDiv:hover::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.cardDiv::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  inset: 0 0 0 0;
-  background: rgb(80,204,255);
-  background: linear-gradient(90deg, rgba(80,204,255,1) 0%, rgba(134,218,252,1) 68%);
-  z-index: -1;
-  transition: transform .3s ease;
-}
-
 a, a:visited{
   color: #dd6531;
   font-weight: bold;

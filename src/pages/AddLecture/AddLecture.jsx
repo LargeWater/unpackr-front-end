@@ -5,7 +5,6 @@ import { Button } from '@mui/material';
 
 
 function AddLecture(props) {
-  console.log(props)
   const [formData, setFormData] = useState({
     subject: "",
     takeaway: "",

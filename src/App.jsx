@@ -55,17 +55,21 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-  const handleDeleteLecture = async (id) => {
+  const handleDeleteLecture = async id => {
     console.log("ID", {id})
     const deletedLecture = await lectureService.deleteOne(id)
     setLectures(lectures.filter(lecture => lecture._id !== deletedLecture._id))
   }
 
-  const handleUpdateLecture = async (updatedLectureData) => {
+  const handleUpdateLecture = async updatedLectureData => {
     const updatedLecture = await lectureService.update(updatedLectureData)
-    setLectures(lectures.map(lecture => lecture._id === updatedLecture._id ? updatedLecture : lecture))
+    const newLectureArray = lectures.map(lecture => 
+      lecture._id === updatedLecture._id ? updatedLecture : lecture
+    )
+    setLectures(newLectureArray)
     navigate('/lectures')
   }
+  
   return (
     <>
       <div className='App'>

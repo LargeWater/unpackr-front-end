@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 import { TextField } from '@mui/material'
+import { Button }from '@mui/material'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -66,6 +67,7 @@ const SignupForm = props => {
           type="text"
           autoComplete="off"
           id="email"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           label="Email"
           variant='outlined'
           value={email}
@@ -78,6 +80,7 @@ const SignupForm = props => {
           type="password"
           autoComplete="off"
           id="password"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           label="Password"
           variant='outlined'
           value={password}
@@ -90,6 +93,7 @@ const SignupForm = props => {
           type="password"
           autoComplete="off"
           id="confirm"
+          sx={{ width: "30ch", backgroundColor: "white"}}
           label="Confirm Password"
           variant='outlined'
           value={passwordConf}
@@ -109,11 +113,11 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+        <Button disabled={isFormInvalid()} className={styles.button}>
           Sign Up
-        </button>
+        </Button>
         <Link to="/">
-          <button>Cancel</button>
+          <Button>Cancel</Button>
         </Link>
       </div>
     </form>
