@@ -9,7 +9,7 @@ import styles from "./LectureIndex.module.css";
 import { useState, useEffect } from "react";
 
 
-const Index = (props, user) => {
+const Index = (props) => {
   console.log("index props", props)
   const[lectures, setLectures] = useState([]);
   
